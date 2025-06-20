@@ -1,0 +1,205 @@
+/* Basic Reset & Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a2e; /* Dark, techy background */
+    font-family: 'VT323', monospace; /* Default pixel font for body */
+    color: #e0e0e0; /* Light text color */
+    overflow: hidden; /* Prevents scrollbars */
+    cursor: auto;
+}
+
+/* App Container - The main "screen" */
+#app-container {
+    position: relative;
+    width: 90vw;
+    max-width: 800px;
+    height: 90vh; /* 👈 Fixed height relative to viewport */
+    background-color: #2e0f4d;
+    border: 5px solid #ff00ff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden; /* 👈 Prevents scrollbars from showing */
+    box-sizing: border-box;
+}
+
+
+
+/* Pop-up Styles */
+.popup {
+    position: absolute;
+    padding: 30px;
+    background-color: #4a0f6e;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-align: center;
+    max-width: 85%;
+    min-height: 250px;
+    height: auto;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transform: scale(0.7) translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 6px;
+    box-sizing: border-box;
+
+
+    background-color: #4a0f6e;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+.popup.active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    z-index: 10; /* Bring active popup to front */
+}
+
+/* Heading Styles */
+.popup h1, .popup h2 {
+    font-family: 'Press Start 2P', cursive; /* Bold pixel font for headings */
+    color: #ffcc00; /* Bright yellow */
+    text-shadow: 3px 3px #000; /* Simple shadow */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    line-height: 1.2;
+}
+
+.popup h2 {
+    font-size: 1.5em;
+}
+
+/* Message Text */
+.popup p.message {
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.message-box {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px dashed #00ffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.message-box .sender {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ccff00; /* Neon green for sender */
+}
+
+
+.popup img,
+.popup video {
+    max-height: 60vh; /* 👈 limits height to fit within the container */
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    border: 3px solid #ccff00;
+    object-fit: contain;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+}
+
+
+/* Button Styling */
+button.next-btn {
+    background-color: #00ff00; /* Neon green button */
+    color: #000;
+    border: 3px solid #00cc00;
+    padding: 12px 25px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 4px 4px #009900; /* 3D effect */
+    transition: all 0.1s ease-out;
+    margin-top: auto; /* Pushes button to the bottom of the popup */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button.next-btn:hover {
+    background-color: #00cc00;
+    box-shadow: 1px 1px #006600; /* "Pressed" effect */
+    transform: translate(3px, 3px);
+}
+
+button.next-btn:active {
+    background-color: #009900;
+    box-shadow: 0 0 #003300;
+    transform: translate(4px, 4px);
+}
+
+/* Final message specific styling */
+.final-message {
+    font-size: 1.3em;
+    color: #ffe5b4; /* Softer color for the final message */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .popup {
+        padding: 20px;
+        min-height: 200px;
+    }
+    .popup h1 {
+        font-size: 1.5em;
+    }
+    .popup h2 {
+        font-size: 1.2em;
+    }
+    .popup p.message {
+        font-size: 1em;
+    }
+    button.next-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    #app-container {
+        width: 95vw;
+        height: 80vh;
+    }
+    .popup {
+        padding: 15px;
+        min-height: 180px;
+    }
+    .popup h1 {
+        font-size: 1.2em;
+    }
+    .popup h2 {
+        font-size: 1em;
+    }
+    .popup p.message {
+        font-size: 0.9em;
+    }
+    button.next-btn {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+}
